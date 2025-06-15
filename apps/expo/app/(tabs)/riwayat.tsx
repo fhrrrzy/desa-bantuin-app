@@ -91,7 +91,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Permintaan pembuatan Kartu Keluarga baru',
       status: 'approved',
-      created_at: '2024-01-14 14:20:00',
+      created_at: '2024-01-15 14:20:00',
       updated_at: '2024-01-16 09:15:00',
     },
     {
@@ -100,7 +100,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Pembuatan akta kelahiran untuk anak pertama',
       status: 'rejected',
-      created_at: '2024-01-13 09:15:00',
+      created_at: '2024-01-15 09:15:00',
       updated_at: '2024-01-14 16:30:00',
     },
     {
@@ -109,7 +109,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Permintaan buku nikah untuk pernikahan',
       status: 'pending',
-      created_at: '2024-01-12 16:45:00',
+      created_at: '2024-01-14 16:45:00',
     },
     {
       id: 5,
@@ -117,7 +117,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Pembuatan KIA untuk anak usia 5 tahun',
       status: 'approved',
-      created_at: '2024-01-11 11:30:00',
+      created_at: '2024-01-14 11:30:00',
       updated_at: '2024-01-13 14:20:00',
     },
     {
@@ -126,7 +126,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Permintaan KIS untuk keluarga',
       status: 'pending',
-      created_at: '2024-01-10 08:20:00',
+      created_at: '2024-01-14 08:20:00',
     },
     {
       id: 7,
@@ -134,7 +134,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Pembuatan akta nikah untuk pernikahan baru',
       status: 'approved',
-      created_at: '2024-01-09 13:45:00',
+      created_at: '2024-01-13 13:45:00',
       updated_at: '2024-01-11 10:30:00',
     },
     {
@@ -143,7 +143,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Permintaan surat kematian untuk anggota keluarga',
       status: 'rejected',
-      created_at: '2024-01-08 15:10:00',
+      created_at: '2024-01-13 15:10:00',
       updated_at: '2024-01-09 11:25:00',
     },
     {
@@ -152,7 +152,7 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Penggantian KTP yang hilang',
       status: 'approved',
-      created_at: '2024-01-07 12:00:00',
+      created_at: '2024-01-12 12:00:00',
       updated_at: '2024-01-09 16:45:00',
     },
     {
@@ -161,7 +161,93 @@ export default function RiwayatTab() {
       type: 'permintaan',
       description: 'Perubahan data KK karena pernikahan',
       status: 'pending',
-      created_at: '2024-01-06 09:30:00',
+      created_at: '2024-01-12 09:30:00',
+    },
+    {
+      id: 11,
+      laporan_type: 'Akta Lahir',
+      type: 'permintaan',
+      description: 'Pembuatan akta kelahiran untuk anak kedua',
+      status: 'approved',
+      created_at: '2024-01-12 16:20:00',
+      updated_at: '2024-01-13 10:15:00',
+    },
+    {
+      id: 12,
+      laporan_type: 'KIA (Kartu identitas anak)',
+      type: 'permintaan',
+      description: 'Pembuatan KIA untuk anak usia 3 tahun',
+      status: 'pending',
+      created_at: '2024-01-11 11:45:00',
+    },
+    {
+      id: 13,
+      laporan_type: 'Buku Nikah',
+      type: 'permintaan',
+      description: 'Permintaan buku nikah untuk pernikahan kedua',
+      status: 'rejected',
+      created_at: '2024-01-11 14:30:00',
+      updated_at: '2024-01-12 09:20:00',
+    },
+    {
+      id: 14,
+      laporan_type: 'KIS (Kartu Indonesia Sehat)',
+      type: 'permintaan',
+      description: 'Permintaan KIS untuk anak sekolah',
+      status: 'approved',
+      created_at: '2024-01-10 08:15:00',
+      updated_at: '2024-01-11 12:30:00',
+    },
+    {
+      id: 15,
+      laporan_type: 'Akta Nikah',
+      type: 'permintaan',
+      description: 'Pembuatan akta nikah untuk pernikahan ketiga',
+      status: 'pending',
+      created_at: '2024-01-10 15:45:00',
+    },
+    {
+      id: 16,
+      laporan_type: 'Surat Kematian',
+      type: 'permintaan',
+      description: 'Permintaan surat kematian untuk kakek',
+      status: 'approved',
+      created_at: '2024-01-09 10:20:00',
+      updated_at: '2024-01-10 14:15:00',
+    },
+    {
+      id: 17,
+      laporan_type: 'KTP',
+      type: 'permintaan',
+      description: 'Penggantian KTP yang rusak',
+      status: 'pending',
+      created_at: '2024-01-09 13:30:00',
+    },
+    {
+      id: 18,
+      laporan_type: 'KK',
+      type: 'permintaan',
+      description: 'Perubahan data KK karena kelahiran',
+      status: 'approved',
+      created_at: '2024-01-08 09:45:00',
+      updated_at: '2024-01-09 11:20:00',
+    },
+    {
+      id: 19,
+      laporan_type: 'Akta Lahir',
+      type: 'permintaan',
+      description: 'Pembuatan akta kelahiran untuk anak ketiga',
+      status: 'rejected',
+      created_at: '2024-01-08 16:10:00',
+      updated_at: '2024-01-09 08:30:00',
+    },
+    {
+      id: 20,
+      laporan_type: 'KIA (Kartu identitas anak)',
+      type: 'permintaan',
+      description: 'Pembuatan KIA untuk anak usia 1 tahun',
+      status: 'pending',
+      created_at: '2024-01-08 11:25:00',
     },
   ]
 
@@ -256,6 +342,46 @@ export default function RiwayatTab() {
       hour: '2-digit',
       minute: '2-digit',
     })
+  }
+
+  const formatDateOnly = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('id-ID', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    })
+  }
+
+  const getDateGroup = (dateString: string) => {
+    const date = new Date(dateString)
+    const today = new Date()
+    const yesterday = new Date(today)
+    yesterday.setDate(yesterday.getDate() - 1)
+
+    if (date.toDateString() === today.toDateString()) {
+      return 'Today'
+    } else if (date.toDateString() === yesterday.toDateString()) {
+      return 'Yesterday'
+    } else {
+      return formatDateOnly(dateString)
+    }
+  }
+
+  const groupRequestsByDate = (requests: RequestHistory[]) => {
+    const grouped = requests.reduce(
+      (acc, request) => {
+        const dateGroup = getDateGroup(request.created_at)
+        if (!acc[dateGroup]) {
+          acc[dateGroup] = []
+        }
+        acc[dateGroup].push(request)
+        return acc
+      },
+      {} as Record<string, RequestHistory[]>
+    )
+
+    return grouped
   }
 
   const handleRequestPress = (request: RequestHistory) => {
@@ -593,60 +719,70 @@ export default function RiwayatTab() {
           {/* Request List */}
           <YStack space="$3">
             {filteredRequests.length === 0 ? (
-              <Card style={{ padding: 32 }} backgroundColor="$color2">
-                <YStack style={{ alignItems: 'center' }} space="$2">
-                  <Text fontSize="$4" color="$color10" style={{ textAlign: 'center' }}>
-                    Tidak ada permintaan yang ditemukan
-                  </Text>
-                  <Text fontSize="$3" color="$color9" style={{ textAlign: 'center' }}>
-                    Coba ubah filter atau buat permintaan baru
-                  </Text>
+              <Card style={{ padding: 48 }} backgroundColor="$color2">
+                <YStack style={{ alignItems: 'center' }} space="$3">
+                  <FileText size={48} color="$color8" />
+                  <YStack space="$1" style={{ alignItems: 'center' }}>
+                    <Text
+                      fontSize="$5"
+                      fontWeight="bold"
+                      color="$color11"
+                      style={{ textAlign: 'center' }}
+                    >
+                      Belum ada riwayat
+                    </Text>
+                    <Text fontSize="$3" color="$color9" style={{ textAlign: 'center' }}>
+                      Permintaan yang Anda buat akan muncul di sini
+                    </Text>
+                  </YStack>
                 </YStack>
               </Card>
             ) : (
               <YStack space="$2">
-                {filteredRequests.map((request) => (
-                  <Card
-                    key={request.id}
-                    style={{ padding: 16 }}
-                    backgroundColor="$color2"
-                    pressStyle={{ backgroundColor: '$color3' }}
-                    onPress={() => handleRequestPress(request)}
-                  >
-                    <YStack space="$3">
-                      <XStack style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <YStack style={{ flex: 1 }} space="$1">
-                          <Text fontSize="$4" fontWeight="bold" color="$color12">
-                            {request.laporan_type}
-                          </Text>
-                          <Text fontSize="$3" color="$color11" numberOfLines={2}>
-                            {request.description}
-                          </Text>
-                        </YStack>
-                        <XStack style={{ alignItems: 'center' }} space="$1">
-                          {getStatusIcon(request.status)}
-                          {getStatusBadge(request.status)}
-                        </XStack>
-                      </XStack>
-
-                      <XStack style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-                        <YStack space="$1">
-                          <Text fontSize="$2" color="$color10">
-                            Dibuat: {formatDate(request.created_at)}
-                          </Text>
-                          {request.updated_at && (
-                            <Text fontSize="$2" color="$color10">
-                              Diperbarui: {formatDate(request.updated_at)}
-                            </Text>
-                          )}
-                        </YStack>
-                        <Text fontSize="$2" color="$color9">
-                          ID: #{request.id}
-                        </Text>
-                      </XStack>
+                {Object.entries(groupRequestsByDate(filteredRequests)).map(
+                  ([dateGroup, requestsInGroup]) => (
+                    <YStack key={dateGroup} space="$3">
+                      <Text
+                        fontSize="$4"
+                        fontWeight="bold"
+                        color="$color11"
+                        style={{ paddingHorizontal: 16, paddingVertical: 12 }}
+                      >
+                        {dateGroup}
+                      </Text>
+                      <YStack space="$2" style={{ paddingHorizontal: 16 }}>
+                        {requestsInGroup.map((request) => (
+                          <Card
+                            key={request.id}
+                            style={{ padding: 16 }}
+                            backgroundColor="$color2"
+                            pressStyle={{ backgroundColor: '$color3' }}
+                            onPress={() => handleRequestPress(request)}
+                          >
+                            <YStack space="$3">
+                              <XStack
+                                style={{
+                                  justifyContent: 'space-between',
+                                  alignItems: 'flex-start',
+                                }}
+                              >
+                                <YStack style={{ flex: 1 }} space="$1">
+                                  <Text fontSize="$4" fontWeight="bold" color="$color12">
+                                    {request.laporan_type}
+                                  </Text>
+                                  <Text fontSize="$3" color="$color11" numberOfLines={2}>
+                                    {request.description}
+                                  </Text>
+                                </YStack>
+                                {getStatusBadge(request.status)}
+                              </XStack>
+                            </YStack>
+                          </Card>
+                        ))}
+                      </YStack>
                     </YStack>
-                  </Card>
-                ))}
+                  )
+                )}
               </YStack>
             )}
           </YStack>
