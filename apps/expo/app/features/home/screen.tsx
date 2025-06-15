@@ -196,15 +196,11 @@ export function HomeScreen() {
               User
             </Text>
           </YStack>
-          <XStack space="$2">
-            <Button size="$2" circular icon={Settings} onPress={handleViewProfile} chromeless />
-            <Button size="$2" circular icon={LogOut} onPress={handleLogout} chromeless />
-          </XStack>
         </XStack>
 
         {/* Statistics Cards */}
         <YStack space="$3">
-          <H2 fontSize="$6" color="$color12">
+          <H2 fontSize="$4" letterSpacing={0.5} color="$color12">
             Statistik Permintaan
           </H2>
           <XStack space="$3" style={{ flexWrap: 'wrap' }}>
@@ -265,7 +261,7 @@ export function HomeScreen() {
 
         {/* Action Buttons */}
         <YStack space="$3">
-          <H2 fontSize="$6" color="$color12">
+          <H2 fontSize="$4" letterSpacing={0.5} color="$color12">
             Aksi Cepat
           </H2>
           <XStack space="$3">
@@ -280,7 +276,7 @@ export function HomeScreen() {
 
         {/* Recent Requests Cards */}
         <YStack space="$3">
-          <H2 fontSize="$6" color="$color12">
+          <H2 fontSize="$4" letterSpacing={0.5} color="$color12">
             Permintaan Terbaru
           </H2>
           <YStack space="$2">
