@@ -284,6 +284,128 @@ export default function RiwayatTab() {
     },
   ]
 
+  const getStatusBadge = (status: string) => {
+    const baseStyle = {
+      paddingHorizontal: 8,
+      paddingVertical: 4,
+      borderRadius: 12,
+      fontSize: 12,
+      fontWeight: '600' as const,
+    }
+
+    switch (status) {
+      case 'pending':
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#fef3c7',
+              color: '#d97706',
+            }}
+          >
+            Pending
+          </Text>
+        )
+      case 'approved':
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#dcfce7',
+              color: '#16a34a',
+            }}
+          >
+            Disetujui
+          </Text>
+        )
+      case 'rejected':
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#fee2e2',
+              color: '#dc2626',
+            }}
+          >
+            Ditolak
+          </Text>
+        )
+      default:
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#f3f4f6',
+              color: '#6b7280',
+            }}
+          >
+            {status}
+          </Text>
+        )
+    }
+  }
+
+  const getStatusBadgeDetail = (status: string) => {
+    const baseStyle = {
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      borderRadius: 16,
+      fontSize: 14,
+      fontWeight: '600' as const,
+    }
+
+    switch (status) {
+      case 'pending':
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#fef3c7',
+              color: '#d97706',
+            }}
+          >
+            Pending
+          </Text>
+        )
+      case 'approved':
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#dcfce7',
+              color: '#16a34a',
+            }}
+          >
+            Disetujui
+          </Text>
+        )
+      case 'rejected':
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#fee2e2',
+              color: '#dc2626',
+            }}
+          >
+            Ditolak
+          </Text>
+        )
+      default:
+        return (
+          <Text
+            style={{
+              ...baseStyle,
+              backgroundColor: '#f3f4f6',
+              color: '#6b7280',
+            }}
+          >
+            {status}
+          </Text>
+        )
+    }
+  }
+
   return (
     <>
       <ScrollView
@@ -503,13 +625,7 @@ export default function RiwayatTab() {
                         </YStack>
                         <XStack style={{ alignItems: 'center' }} space="$1">
                           {getStatusIcon(request.status)}
-                          <Text
-                            fontSize="$2"
-                            fontWeight="bold"
-                            color={getStatusColor(request.status)}
-                          >
-                            {getStatusLabel(request.status)}
-                          </Text>
+                          {getStatusBadge(request.status)}
                         </XStack>
                       </XStack>
 
@@ -598,13 +714,7 @@ export default function RiwayatTab() {
                     </XStack>
                     <XStack style={{ alignItems: 'center' }} space="$2">
                       {getStatusIcon(selectedRequest.status)}
-                      <Text
-                        fontSize="$2"
-                        fontWeight="bold"
-                        color={getStatusColor(selectedRequest.status)}
-                      >
-                        {getStatusLabel(selectedRequest.status)}
-                      </Text>
+                      {getStatusBadgeDetail(selectedRequest.status)}
                     </XStack>
                   </XStack>
                 </YStack>
