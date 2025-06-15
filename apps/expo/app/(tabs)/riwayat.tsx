@@ -29,7 +29,9 @@ import {
   Hash,
   Paperclip,
   Image as ImageIcon,
+  Plus,
 } from '@tamagui/lucide-icons'
+import { CreateRequestSheet, FormData } from '../components/CreateRequestSheet'
 
 interface RequestHistory {
   id: number
@@ -74,6 +76,7 @@ export default function RiwayatTab() {
   const [sortBy, setSortBy] = useState('newest')
   const [selectedRequest, setSelectedRequest] = useState<RequestHistory | null>(null)
   const [sheetOpen, setSheetOpen] = useState(false)
+  const [formSheetOpen, setFormSheetOpen] = useState(false)
 
   // Dummy data for request history
   const dummyRequests: RequestHistory[] = [
@@ -394,6 +397,28 @@ export default function RiwayatTab() {
     setSelectedRequest(null)
   }
 
+  const openFormSheet = () => {
+    setFormSheetOpen(true)
+  }
+
+  const closeFormSheet = () => {
+    setFormSheetOpen(false)
+  }
+
+  const handleFormSubmit = (formData: FormData) => {
+    // Create new request
+    const newRequest: RequestHistory = {
+      id: Math.max(...requests.map((r) => r.id)) + 1,
+      laporan_type: formData.tipeDokumen,
+      type: formData.jenis,
+      description: formData.deskripsi,
+      status: 'pending',
+      created_at: new Date().toISOString().replace('T', ' ').substring(0, 19),
+    }
+
+    setRequests([newRequest, ...requests])
+  }
+
   // Dummy attachment images
   const dummyAttachments = [
     {
@@ -546,6 +571,18 @@ export default function RiwayatTab() {
               Daftar permintaan yang telah dibuat
             </Text>
           </YStack>
+
+          {/* Buat Permintaan Button */}
+          <Button
+            size="$4"
+            background="$blue10"
+            color="white"
+            onPress={openFormSheet}
+            icon={Plus}
+            style={{ marginBottom: 8 }}
+          >
+            Buat Permintaan
+          </Button>
 
           {/* Filters */}
           <Card style={{ padding: 16 }} backgroundColor="$color2">
@@ -964,6 +1001,14 @@ export default function RiwayatTab() {
           </Sheet.ScrollView>
         </Sheet.Frame>
       </Sheet>
+
+      {/* Form Sheet */}
+      <CreateRequestSheet
+        open={formSheetOpen}
+        onOpenChange={setFormSheetOpen}
+        onSubmit={handleFormSubmit}
+        documentTypes={documentTypes}
+      />
     </>
   )
 }

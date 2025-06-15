@@ -29,6 +29,7 @@ import {
   Image as ImageIcon,
 } from '@tamagui/lucide-icons'
 import { useRouter } from 'solito/navigation'
+import { CreateRequestSheet, FormData } from '../../components/CreateRequestSheet'
 
 const API_BASE_URL = 'http://localhost:8000/api'
 
@@ -63,6 +64,18 @@ export function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false)
   const [selectedRequest, setSelectedRequest] = useState<RecentRequest | null>(null)
   const [sheetOpen, setSheetOpen] = useState(false)
+  const [formSheetOpen, setFormSheetOpen] = useState(false)
+
+  const documentTypes = [
+    'KTP',
+    'KK',
+    'Buku Nikah',
+    'Akta Nikah',
+    'Akta Lahir',
+    'Surat Kematian',
+    'KIA (Kartu identitas anak)',
+    'KIS (Kartu Indonesia Sehat)',
+  ]
 
   // Dummy data for recent requests
   const dummyRecentRequests: RecentRequest[] = [
@@ -170,7 +183,7 @@ export function HomeScreen() {
   }
 
   const handleCreateRequest = () => {
-    router.push('/create-request')
+    setFormSheetOpen(true)
   }
 
   const handleViewRequests = () => {
@@ -357,6 +370,24 @@ export function HomeScreen() {
       hour: '2-digit',
       minute: '2-digit',
     })
+  }
+
+  const closeFormSheet = () => {
+    setFormSheetOpen(false)
+  }
+
+  const handleFormSubmit = (formData: FormData) => {
+    // Create new request
+    const newRequest: RecentRequest = {
+      id: Math.max(...recentRequests.map((r) => r.id)) + 1,
+      laporan_type: formData.tipeDokumen,
+      type: formData.jenis,
+      description: formData.deskripsi,
+      status: 'pending',
+      created_at: new Date().toISOString().replace('T', ' ').substring(0, 19),
+    }
+
+    setRecentRequests([newRequest, ...recentRequests])
   }
 
   return (
@@ -635,6 +666,14 @@ export function HomeScreen() {
           </Sheet.ScrollView>
         </Sheet.Frame>
       </Sheet>
+
+      {/* Form Sheet */}
+      <CreateRequestSheet
+        open={formSheetOpen}
+        onOpenChange={setFormSheetOpen}
+        onSubmit={handleFormSubmit}
+        documentTypes={documentTypes}
+      />
     </>
   )
 }
