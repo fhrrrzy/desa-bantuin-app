@@ -14,11 +14,9 @@ import {
 } from '@my/ui'
 import {
   User,
-  FileText,
   Plus,
   LogOut,
   Settings,
-  BarChart3,
   Clock,
   CheckCircle,
   XCircle,
@@ -33,13 +31,6 @@ import { CreateRequestSheet, FormData } from '../../components/CreateRequestShee
 
 const API_BASE_URL = 'http://localhost:8000/api'
 
-interface RequestStatistics {
-  total: number
-  pending: number
-  approved: number
-  rejected: number
-}
-
 interface RecentRequest {
   id: number
   laporan_type: string
@@ -53,12 +44,6 @@ export function HomeScreen() {
   const router = useRouter()
   const toast = useToastController()
 
-  const [statistics, setStatistics] = useState<RequestStatistics>({
-    total: 0,
-    pending: 0,
-    approved: 0,
-    rejected: 0,
-  })
   const [recentRequests, setRecentRequests] = useState<RecentRequest[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [refreshing, setRefreshing] = useState(false)
@@ -138,34 +123,12 @@ export function HomeScreen() {
   ]
 
   useEffect(() => {
-    fetchStatistics()
     setRecentRequests(dummyRecentRequests)
   }, [])
 
-  const fetchStatistics = async () => {
-    setIsLoading(true)
-    try {
-      // Simulate API call with dummy data
-      const dummyStats: RequestStatistics = {
-        total: 15,
-        pending: 3,
-        approved: 10,
-        rejected: 2,
-      }
-      setStatistics(dummyStats)
-    } catch (error) {
-      console.error('Error fetching statistics:', error)
-      toast.show('Error', {
-        message: 'Gagal memuat data statistik',
-      })
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   const onRefresh = async () => {
     setRefreshing(true)
-    await fetchStatistics()
+    setRecentRequests(dummyRecentRequests)
     setRefreshing(false)
   }
 
@@ -184,10 +147,6 @@ export function HomeScreen() {
 
   const handleCreateRequest = () => {
     setFormSheetOpen(true)
-  }
-
-  const handleViewRequests = () => {
-    router.push('/requests')
   }
 
   const handleViewProfile = () => {
@@ -407,80 +366,54 @@ export function HomeScreen() {
             </YStack>
           </XStack>
 
-          {/* Statistics Cards */}
+          {/* Modern Laporan Card */}
           <YStack space="$3">
             <H2 fontSize="$4" letterSpacing={0.5} color="$color12">
-              Statistik Permintaan
+              Laporan Anda
             </H2>
-            <XStack space="$3" style={{ flexWrap: 'wrap' }}>
-              <Card style={{ flex: 1, padding: 12 }} backgroundColor="$color2">
-                <XStack style={{ alignItems: 'center' }} space="$2">
-                  <BarChart3 size={20} color="$color10" />
-                  <YStack>
-                    <Text fontSize="$2" color="$color10">
-                      Total
-                    </Text>
-                    <Text fontSize="$4" fontWeight="bold" color="$color12">
-                      {statistics.total}
-                    </Text>
-                  </YStack>
-                </XStack>
-              </Card>
-              <Card style={{ flex: 1, padding: 12 }} backgroundColor="$color2">
-                <XStack style={{ alignItems: 'center' }} space="$2">
-                  <Clock size={20} color="$color10" />
-                  <YStack>
-                    <Text fontSize="$2" color="$color10">
-                      Pending
-                    </Text>
-                    <Text fontSize="$4" fontWeight="bold" color="$color12">
-                      {statistics.pending}
-                    </Text>
-                  </YStack>
-                </XStack>
-              </Card>
-              <Card style={{ flex: 1, padding: 12 }} backgroundColor="$color2">
-                <XStack style={{ alignItems: 'center' }} space="$2">
-                  <CheckCircle size={20} color="$color10" />
-                  <YStack>
-                    <Text fontSize="$2" color="$color10">
-                      Disetujui
-                    </Text>
-                    <Text fontSize="$4" fontWeight="bold" color="$color12">
-                      {statistics.approved}
-                    </Text>
-                  </YStack>
-                </XStack>
-              </Card>
-              <Card style={{ flex: 1, padding: 12 }} backgroundColor="$color2">
-                <XStack style={{ alignItems: 'center' }} space="$2">
-                  <XCircle size={20} color="$color10" />
-                  <YStack>
-                    <Text fontSize="$2" color="$color10">
-                      Ditolak
-                    </Text>
-                    <Text fontSize="$4" fontWeight="bold" color="$color12">
-                      {statistics.rejected}
-                    </Text>
-                  </YStack>
-                </XStack>
-              </Card>
-            </XStack>
-          </YStack>
-
-          {/* Action Buttons */}
-          <YStack space="$3">
-            <H2 fontSize="$4" letterSpacing={0.5} color="$color12">
-              Aksi Cepat
-            </H2>
-            <XStack space="$3">
-              <Button flex={1} size="$4" theme="blue" icon={Plus} onPress={handleCreateRequest}>
-                Buat Permintaan
-              </Button>
-              <Button flex={1} size="$4" theme="blue" icon={FileText} onPress={handleViewRequests}>
-                Lihat Semua
-              </Button>
-            </XStack>
+            <Card
+              style={{
+                padding: 20,
+                borderRadius: 16,
+                borderWidth: 0,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.1,
+                shadowRadius: 8,
+                elevation: 4,
+              }}
+              backgroundColor="$blue2"
+            >
+              <XStack style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                <YStack space="$2">
+                  <Text fontSize="$2" color="$blue11" fontWeight="500">
+                    Total Laporan
+                  </Text>
+                  <Text fontSize="$8" fontWeight="bold" color="$blue12">
+                    {recentRequests.length}
+                  </Text>
+                  <Text fontSize="$1" color="$blue10">
+                    Permintaan yang telah dibuat
+                  </Text>
+                </YStack>
+                <Button
+                  size="$4"
+                  circular
+                  theme="blue"
+                  onPress={handleCreateRequest}
+                  icon={Plus}
+                  style={{
+                    width: 56,
+                    height: 56,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 4,
+                    elevation: 4,
+                  }}
+                />
+              </XStack>
+            </Card>
           </YStack>
 
           {/* Recent Requests Cards */}
@@ -560,7 +493,7 @@ export function HomeScreen() {
 
                   <YStack space="$2">
                     <XStack style={{ alignItems: 'center' }} space="$2">
-                      <FileText size={24} color="#1e293b" />
+                      <Hash size={24} color="#1e293b" />
                       <Text fontSize="$6" fontWeight="bold" color="#1e293b">
                         {selectedRequest.laporan_type}
                       </Text>
