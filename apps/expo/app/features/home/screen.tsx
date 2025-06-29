@@ -610,3 +610,5 @@ export function HomeScreen() {
     </>
   )
 }
+
+export default HomeScreen

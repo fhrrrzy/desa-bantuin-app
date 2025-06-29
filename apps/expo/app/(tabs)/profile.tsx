@@ -1,7 +1,28 @@
 import { View } from 'react-native'
-import { Text, YStack, XStack, H4, H6, Image } from '@my/ui'
+import { Text, YStack, XStack, H4, H6, Image, Button } from '@my/ui'
+import { useAuth } from '../contexts/AuthContext'
+import { useRouter } from 'solito/navigation'
+import { LogOut } from '@tamagui/lucide-icons'
 
 export default function ProfileTab() {
+  const { user, logout } = useAuth()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    await logout()
+    router.replace('/login')
+  }
+
+  if (!user) {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
+        <YStack style={{ flex: 1, padding: 16, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </YStack>
+      </View>
+    )
+  }
+
   return (
     <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
       <YStack style={{ flex: 1, padding: 16 }} space="$4">
@@ -29,8 +50,8 @@ export default function ProfileTab() {
           </View>
 
           <YStack style={{ alignItems: 'center' }} space="$2">
-            <H4>John Doe</H4>
-            <H6 color="$color10">john.doe@example.com</H6>
+            <H4>{user.name}</H4>
+            <H6 color="$color10">{user.email}</H6>
           </YStack>
         </YStack>
 
@@ -40,23 +61,23 @@ export default function ProfileTab() {
 
           <XStack style={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Text color="$color10">Nama Lengkap</Text>
-            <Text fontWeight="600">John Doe</Text>
+            <Text fontWeight="600">{user.name}</Text>
           </XStack>
 
           <XStack style={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Text color="$color10">Email</Text>
-            <Text fontWeight="600">john.doe@example.com</Text>
+            <Text fontWeight="600">{user.email}</Text>
           </XStack>
 
           <XStack style={{ justifyContent: 'space-between', alignItems: 'center' }}>
             <Text color="$color10">No. Telepon</Text>
-            <Text fontWeight="600">+62 812-3456-7890</Text>
+            <Text fontWeight="600">{user.phone_number}</Text>
           </XStack>
 
           <XStack style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text color="$color10">Alamat</Text>
-            <Text fontWeight="600" style={{ flex: 1 }}>
-              Jl. Contoh No. 123, Jakarta
+            <Text color="$color10">Role</Text>
+            <Text fontWeight="600" style={{ textTransform: 'capitalize' }}>
+              {user.role}
             </Text>
           </XStack>
         </YStack>
@@ -76,6 +97,17 @@ export default function ProfileTab() {
             <Text fontWeight="600">Januari 2024</Text>
           </XStack>
         </YStack>
+
+        {/* Logout Button */}
+        <Button
+          size="$4"
+          backgroundColor="$red10"
+          color="white"
+          onPress={handleLogout}
+          icon={LogOut}
+        >
+          Keluar
+        </Button>
       </YStack>
     </View>
   )
