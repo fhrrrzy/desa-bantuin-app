@@ -4,9 +4,9 @@ import { YStack, XStack, Text, H1, H2, Button, Card, useToastController, Separat
 import { Input } from '@tamagui/input'
 import { Eye, EyeOff, Phone, Lock, Building2 } from '@tamagui/lucide-icons'
 import { useRouter } from 'solito/navigation'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../src/contexts/AuthContext'
 
-const API_BASE_URL = 'http://localhost:8000/api'
+const API_BASE_URL = 'http://10.0.2.2:8000/api'
 
 interface LoginFormData {
   phone_number: string

@@ -4,7 +4,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font'
 import { SplashScreen, Slot } from 'expo-router'
 import { Provider } from 'app/provider'
-import { AuthProvider } from './contexts/AuthContext'
+import { AuthProvider } from '../src/contexts/AuthContext'
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.

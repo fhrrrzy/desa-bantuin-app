@@ -4,9 +4,9 @@ import { YStack, XStack, Text, H1, H2, Button, Card, useToastController, Separat
 import { Input } from '@tamagui/input'
 import { Eye, EyeOff, Phone, Lock, User, Mail, Building2, ArrowLeft } from '@tamagui/lucide-icons'
 import { useRouter } from 'solito/navigation'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../src/contexts/AuthContext'
 
-const API_BASE_URL = 'http://localhost:8000/api'
+const API_BASE_URL = 'http://10.0.2.2:8000/api'
 
 interface RegisterFormData {
   name: string
@@ -128,56 +128,64 @@ export default function RegisterScreen() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
         <YStack
           flex={1}
-          justifyContent="center"
-          paddingHorizontal="$4"
+          style={{
+            justifyContent: 'center',
+            paddingHorizontal: 16,
+            backgroundColor: '$background',
+          }}
           space="$6"
-          backgroundColor="$background"
         >
           {/* Header */}
-          <YStack space="$3" alignItems="center">
+          <YStack space="$3" style={{ alignItems: 'center' }}>
             <Button
               size="$3"
               circular
-              backgroundColor="$color3"
-              position="absolute"
-              top={-20}
-              left={0}
+              style={{
+                backgroundColor: '$color3',
+                position: 'absolute',
+                top: -20,
+                left: 0,
+              }}
               onPress={handleBackToLogin}
               icon={ArrowLeft}
               color="$color11"
             />
 
             <YStack
-              width={80}
-              height={80}
-              borderRadius="$6"
-              backgroundColor="$blue10"
-              justifyContent="center"
-              alignItems="center"
-              marginBottom="$2"
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: 24,
+                backgroundColor: '$blue10',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 8,
+              }}
             >
               <Building2 size={40} color="white" />
             </YStack>
 
-            <H1 fontSize="$8" fontWeight="bold" textAlign="center" color="$color12">
+            <H1 fontSize="$8" fontWeight="bold" color="$color12" style={{ textAlign: 'center' }}>
               Desa Bantuin
             </H1>
 
-            <Text fontSize="$4" textAlign="center" color="$color11" lineHeight={24}>
+            <Text fontSize="$4" color="$color11" style={{ textAlign: 'center', lineHeight: 24 }}>
               Daftar akun baru untuk mengakses layanan desa
             </Text>
           </YStack>
 
           {/* Register Form */}
           <Card
-            backgroundColor="$color2"
-            borderColor="$color6"
-            borderWidth={1}
-            borderRadius="$4"
-            padding="$4"
+            style={{
+              backgroundColor: '$color2',
+              borderColor: '$color6',
+              borderWidth: 1,
+              borderRadius: 16,
+              padding: 16,
+            }}
             space="$4"
           >
-            <H2 fontSize="$5" fontWeight="600" textAlign="center" color="$color12">
+            <H2 fontSize="$5" fontWeight="600" color="$color12" style={{ textAlign: 'center' }}>
               Daftar
             </H2>
 
@@ -188,25 +196,30 @@ export default function RegisterScreen() {
                   Nama Lengkap
                 </Text>
                 <XStack
-                  borderWidth={1}
-                  borderColor="$color7"
-                  borderRadius="$3"
-                  backgroundColor="$color1"
-                  alignItems="center"
-                  paddingHorizontal="$3"
-                  focusStyle={{ borderColor: '$blue10' }}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '$color7',
+                    borderRadius: 12,
+                    backgroundColor: '$color1',
+                    alignItems: 'center',
+                    paddingHorizontal: 12,
+                  }}
                 >
                   <User size={20} color="$color10" />
                   <Input
                     flex={1}
                     placeholder="Masukkan nama lengkap"
                     value={formData.name}
-                    onChangeText={(text) => setFormData((prev) => ({ ...prev, name: text }))}
+                    onChangeText={(e) =>
+                      setFormData((prev) => ({ ...prev, name: e.nativeEvent.text }))
+                    }
                     borderWidth={0}
-                    backgroundColor="transparent"
-                    fontSize="$4"
-                    paddingVertical="$3"
-                    paddingHorizontal="$2"
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 16,
+                      paddingVertical: 12,
+                      paddingHorizontal: 8,
+                    }}
                     autoComplete="name"
                   />
                 </XStack>
@@ -218,25 +231,30 @@ export default function RegisterScreen() {
                   Email
                 </Text>
                 <XStack
-                  borderWidth={1}
-                  borderColor="$color7"
-                  borderRadius="$3"
-                  backgroundColor="$color1"
-                  alignItems="center"
-                  paddingHorizontal="$3"
-                  focusStyle={{ borderColor: '$blue10' }}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '$color7',
+                    borderRadius: 12,
+                    backgroundColor: '$color1',
+                    alignItems: 'center',
+                    paddingHorizontal: 12,
+                  }}
                 >
                   <Mail size={20} color="$color10" />
                   <Input
                     flex={1}
                     placeholder="contoh@email.com"
                     value={formData.email}
-                    onChangeText={(text) => setFormData((prev) => ({ ...prev, email: text }))}
+                    onChangeText={(e) =>
+                      setFormData((prev) => ({ ...prev, email: e.nativeEvent.text }))
+                    }
                     borderWidth={0}
-                    backgroundColor="transparent"
-                    fontSize="$4"
-                    paddingVertical="$3"
-                    paddingHorizontal="$2"
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 16,
+                      paddingVertical: 12,
+                      paddingHorizontal: 8,
+                    }}
                     keyboardType="email-address"
                     autoComplete="email"
                     autoCapitalize="none"
@@ -250,27 +268,30 @@ export default function RegisterScreen() {
                   Nomor Telepon
                 </Text>
                 <XStack
-                  borderWidth={1}
-                  borderColor="$color7"
-                  borderRadius="$3"
-                  backgroundColor="$color1"
-                  alignItems="center"
-                  paddingHorizontal="$3"
-                  focusStyle={{ borderColor: '$blue10' }}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '$color7',
+                    borderRadius: 12,
+                    backgroundColor: '$color1',
+                    alignItems: 'center',
+                    paddingHorizontal: 12,
+                  }}
                 >
                   <Phone size={20} color="$color10" />
                   <Input
                     flex={1}
                     placeholder="081234567890"
                     value={formData.phone_number}
-                    onChangeText={(text) =>
-                      setFormData((prev) => ({ ...prev, phone_number: text }))
+                    onChangeText={(e) =>
+                      setFormData((prev) => ({ ...prev, phone_number: e.nativeEvent.text }))
                     }
                     borderWidth={0}
-                    backgroundColor="transparent"
-                    fontSize="$4"
-                    paddingVertical="$3"
-                    paddingHorizontal="$2"
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 16,
+                      paddingVertical: 12,
+                      paddingHorizontal: 8,
+                    }}
                     keyboardType="phone-pad"
                     autoComplete="tel"
                   />
@@ -283,32 +304,37 @@ export default function RegisterScreen() {
                   Password
                 </Text>
                 <XStack
-                  borderWidth={1}
-                  borderColor="$color7"
-                  borderRadius="$3"
-                  backgroundColor="$color1"
-                  alignItems="center"
-                  paddingHorizontal="$3"
-                  focusStyle={{ borderColor: '$blue10' }}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '$color7',
+                    borderRadius: 12,
+                    backgroundColor: '$color1',
+                    alignItems: 'center',
+                    paddingHorizontal: 12,
+                  }}
                 >
                   <Lock size={20} color="$color10" />
                   <Input
                     flex={1}
                     placeholder="Minimal 6 karakter"
                     value={formData.password}
-                    onChangeText={(text) => setFormData((prev) => ({ ...prev, password: text }))}
+                    onChangeText={(e) =>
+                      setFormData((prev) => ({ ...prev, password: e.nativeEvent.text }))
+                    }
                     borderWidth={0}
-                    backgroundColor="transparent"
-                    fontSize="$4"
-                    paddingVertical="$3"
-                    paddingHorizontal="$2"
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 16,
+                      paddingVertical: 12,
+                      paddingHorizontal: 8,
+                    }}
                     secureTextEntry={!showPassword}
                     autoComplete="new-password"
                   />
                   <Button
                     size="$2"
                     circular
-                    backgroundColor="transparent"
+                    style={{ backgroundColor: 'transparent' }}
                     onPress={() => setShowPassword(!showPassword)}
                     icon={showPassword ? EyeOff : Eye}
                     color="$color10"
@@ -322,34 +348,40 @@ export default function RegisterScreen() {
                   Konfirmasi Password
                 </Text>
                 <XStack
-                  borderWidth={1}
-                  borderColor="$color7"
-                  borderRadius="$3"
-                  backgroundColor="$color1"
-                  alignItems="center"
-                  paddingHorizontal="$3"
-                  focusStyle={{ borderColor: '$blue10' }}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '$color7',
+                    borderRadius: 12,
+                    backgroundColor: '$color1',
+                    alignItems: 'center',
+                    paddingHorizontal: 12,
+                  }}
                 >
                   <Lock size={20} color="$color10" />
                   <Input
                     flex={1}
                     placeholder="Ulangi password"
                     value={formData.password_confirmation}
-                    onChangeText={(text) =>
-                      setFormData((prev) => ({ ...prev, password_confirmation: text }))
+                    onChangeText={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        password_confirmation: e.nativeEvent.text,
+                      }))
                     }
                     borderWidth={0}
-                    backgroundColor="transparent"
-                    fontSize="$4"
-                    paddingVertical="$3"
-                    paddingHorizontal="$2"
+                    style={{
+                      backgroundColor: 'transparent',
+                      fontSize: 16,
+                      paddingVertical: 12,
+                      paddingHorizontal: 8,
+                    }}
                     secureTextEntry={!showConfirmPassword}
                     autoComplete="new-password"
                   />
                   <Button
                     size="$2"
                     circular
-                    backgroundColor="transparent"
+                    style={{ backgroundColor: 'transparent' }}
                     onPress={() => setShowConfirmPassword(!showConfirmPassword)}
                     icon={showConfirmPassword ? EyeOff : Eye}
                     color="$color10"
@@ -360,11 +392,13 @@ export default function RegisterScreen() {
               {/* Register Button */}
               <Button
                 size="$4"
-                backgroundColor="$blue10"
+                style={{
+                  backgroundColor: '$blue10',
+                  marginTop: 8,
+                }}
                 color="white"
                 onPress={handleRegister}
                 disabled={isLoading}
-                marginTop="$2"
               >
                 {isLoading ? 'Memproses...' : 'Daftar'}
               </Button>
@@ -372,15 +406,15 @@ export default function RegisterScreen() {
           </Card>
 
           {/* Login Link */}
-          <YStack space="$3" alignItems="center">
+          <YStack space="$3" style={{ alignItems: 'center' }}>
             <Separator />
-            <XStack space="$2" alignItems="center">
+            <XStack space="$2" style={{ alignItems: 'center' }}>
               <Text fontSize="$3" color="$color11">
                 Sudah punya akun?
               </Text>
               <Button
                 size="$3"
-                backgroundColor="transparent"
+                style={{ backgroundColor: 'transparent' }}
                 color="$blue10"
                 onPress={handleBackToLogin}
                 fontWeight="600"
@@ -391,11 +425,11 @@ export default function RegisterScreen() {
           </YStack>
 
           {/* Footer */}
-          <YStack space="$2" alignItems="center" marginTop="$4">
-            <Text fontSize="$2" color="$color10" textAlign="center">
+          <YStack space="$2" style={{ alignItems: 'center', marginTop: 16 }}>
+            <Text fontSize="$2" color="$color10" style={{ textAlign: 'center' }}>
               Aplikasi Layanan Desa Digital
             </Text>
-            <Text fontSize="$2" color="$color10" textAlign="center">
+            <Text fontSize="$2" color="$color10" style={{ textAlign: 'center' }}>
               © 2024 Desa Bantuin. All rights reserved.
             </Text>
           </YStack>

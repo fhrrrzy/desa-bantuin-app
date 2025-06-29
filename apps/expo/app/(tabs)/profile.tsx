@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 import { Text, YStack, XStack, H4, H6, Image, Button } from '@my/ui'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../src/contexts/AuthContext'
 import { useRouter } from 'solito/navigation'
 import { LogOut } from '@tamagui/lucide-icons'
 
@@ -101,7 +101,7 @@ export default function ProfileTab() {
         {/* Logout Button */}
         <Button
           size="$4"
-          backgroundColor="$red10"
+          style={{ backgroundColor: '$red10' }}
           color="white"
           onPress={handleLogout}
           icon={LogOut}
